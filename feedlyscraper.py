@@ -79,7 +79,7 @@ driver.get("https://feedly.com")
 
 # Wait for the dashboard page to load
 WebDriverWait(driver, 30).until(
-    EC.url_contains("https://feedly.com/i/dashboard/")
+    EC.url_contains("https://feedly.com/i/my")
 )
 
 # Wait for the page to fully load
@@ -87,7 +87,7 @@ time.sleep(5)
 
 # Find the element <div title="Vulnerabilities" class="LeftnavListRow">
 feed1 = WebDriverWait(driver, 10).until(
-    EC.presence_of_element_located((By.CSS_SELECTOR, 'div[title="Vulnerabilities"]'))
+    EC.presence_of_element_located((By.CSS_SELECTOR, 'div[title="FEED 1"]'))
 )
 
 # Find the "Show/Hide" button and get its aria-label <div title="Vulnerabilities" class="LeftnavListRow"><button type="button" aria-label="Show Feeds for Vulnerabilities"
@@ -116,7 +116,7 @@ for child in children:
     # find the element <span id="header-title">Adobe</span>, the key word is Adobe it is the title attribute of the child
     keyword = child.get_attribute("title")
     header_title_element = WebDriverWait(driver, 30).until(
-        EC.presence_of_element_located((By.XPATH, f'//span[@id="header-title" and text()="{keyword}"]'))
+        EC.presence_of_element_located((By.XPATH, f'//span[@id="header-title"]'))
     )
     
     # Perform any other actions needed on the header_title_element
